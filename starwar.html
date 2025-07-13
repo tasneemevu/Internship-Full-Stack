@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Project</title>
+
+</head>
+<body>
+
+    <button>Generate Character</button>
+    <h1 class="name"></h1>
+    <img class="image" src="" alt="">
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('button').on ("click", function() {
+                const randomNumber = Math.ceil(Math.random() * 88) // Star Wars characters range from 1 to 88
+                $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${randomNumber}.json`, 
+                    function(data) {
+                       $('h1.name').text(data ['name']);
+                       $('.image').attr('src', data ['image']);
+                    }
+                );
+            });
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
